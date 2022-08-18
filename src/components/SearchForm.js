@@ -1,11 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { fetchBooks } from '../features/books/booksSlice'
 
 const SearchForm = () => {
   const [query, setQuery] = useState('')
 
+  const dispatch = useDispatch()
+
   const setQueryHandler = (e) => setQuery(e.target.value)
-  const handleSubmit = (e) => e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(
+      fetchBooks(`https://www.googleapis.com/books/v1/volumes?q=${query}+terms`)
+    )
+  }
 
   return (
     <Wrapper>
