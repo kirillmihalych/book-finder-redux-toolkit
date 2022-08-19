@@ -15,6 +15,7 @@ const SearchForm = () => {
     dispatch(
       fetchBooks(`https://www.googleapis.com/books/v1/volumes?q=${query}+terms`)
     )
+    setQuery('')
   }
 
   return (
@@ -45,7 +46,7 @@ const Wrapper = styled.section`
   .search-form {
     width: 90vw;
     height: 40px;
-    max-width: 700px;
+    max-width: 1170px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.2);
     display: flex;
