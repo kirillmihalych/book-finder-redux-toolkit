@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux/es/exports'
 import LoadingSpinner from '../../components/LoadingSpinner'
+import noimg from '../../assets/noimg.jpg'
 import styled from 'styled-components'
 
 const BooksList = () => {
@@ -24,7 +25,11 @@ const BooksList = () => {
             <article key={book.id} className='book-box'>
               <div className='book-wrapper'>
                 <img
-                  src={book.volumeInfo.imageLinks.thumbnail}
+                  src={
+                    book.volumeInfo.imageLinks
+                      ? book.volumeInfo.imageLinks.thumbnail
+                      : noimg
+                  }
                   alt="book's image"
                   className='book-image'
                 />
